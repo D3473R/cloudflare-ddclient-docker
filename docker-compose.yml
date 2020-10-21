@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  ddclient:
+    image: d3473r/cloudflare-ddclient-docker
+    container_name: ddclient
+    environment:
+      - DOMAIN
+      - TOKEN
