@@ -17,11 +17,15 @@ log.basicConfig(
     level=log.INFO
 )
 
+log.getLogger('filelock').setLevel(log.WARNING)
+
 TOKEN = os.environ['TOKEN']
 DOMAIN = tldextract.extract(os.environ['DOMAIN'])
 HEADERS = {'Authorization': 'Bearer ' + TOKEN, 'Content-Type': 'application/json'}
-
-SLEEP_INTERVAL_SEC = 300
+if 'INTERVAL' in os.environ:
+    SLEEP_INTERVAL_SEC = os.environ['INTERVAL']
+else:
+    SLEEP_INTERVAL_SEC = 300
 
 
 class Ddclient:

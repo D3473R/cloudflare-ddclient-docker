@@ -4,6 +4,8 @@ services:
   ddclient:
     image: d3473r/cloudflare-ddclient-docker
     container_name: ddclient
+    restart: unless-stopped
     environment:
       - DOMAIN
       - TOKEN
+      - INTERVAL
